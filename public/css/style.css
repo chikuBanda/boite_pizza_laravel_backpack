@@ -1,0 +1,57 @@
+.navbar-brand, .nav-link, .fa-shopping-cart
+{
+    color: white !important;
+}
+
+.navbar
+{
+    transition: 300ms ease;
+    background-color: transparent;
+}
+
+.scrolled
+{
+    background-color: black !important;
+}
+
+.iconResize
+{
+    transition: 300ms ease;
+    width: 80px;
+    height: 50px;
+}
+
+.navbar-brand > span
+{
+    font-size: x-large;
+}
+
+.font-large
+{
+    font-size: large;
+    transition: 300ms ease;
+}
+
+.font-x-large
+{
+    font-size: x-large;
+    transition: 300ms ease;
+}
+
+.font-logo-large
+{
+    font-size: large !important;
+    transition: 300ms ease;
+}
+
+.font-small
+{
+    font-size: small !important;
+    transition: 300ms ease;
+}
+
+.font-medium
+{
+    font-size: medium !important;
+    transition: 300ms ease;
+}
