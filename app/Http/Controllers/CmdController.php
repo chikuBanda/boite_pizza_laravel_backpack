@@ -47,7 +47,8 @@ class CmdController extends Controller
         Stripe::setApiKey("sk_test_KTU1mI2lVJ95CKmZ5gmDmLtw00RzlcYfSe");
         try{
             \Stripe\Charge::create([
-                'amount' => $cart->totalPrice * 100,
+                //'amount' => $cart->totalPrice * 100,
+                'amount' => $request->input('total_amount') * 100,
                 'currency' => 'usd',
                 'source'=> "tok_mastercard",
                 'description' => 'My First Test Charge (created for API docs)',

@@ -1,41 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-<div style="
-    background-size: cover;
-    width: 100%;
-    display: flex;
-    flex-flow: column;
-    min-height: 100vh;
-    background-color: #e8dcd8;
-    ">
     <div style="
         background-size: cover;
         width: 100%;
-        height: 200px;
-        background-image: url('{{ asset('uploads/img/ingredients.jpg') }}');
-        position: relative;
+        display: flex;
+        flex-flow: column;
+        min-height: 100vh;
+        background-color: #e8dcd8;
     ">
-        <div style="background-color: black; width: inherit; height: inherit; opacity: 50%">
-        </div>
-        <h1
-            style="
-                position: absolute;
-                background-color: transparent;
-                top: 60px;
-                left: 30%;
-                right: 30%;
-                color: white;
-                text-align: center;
-            "
-        >Checkout</h1>
-
+        <div style="
+            background-size: cover;
+            width: 100%;
+            height: 350px;
+            background-image: url('{{ asset('uploads/img/ingredients.jpg') }}');
+            position: relative;
+        ">
+            <div style="background-color: black; width: inherit; height: inherit; opacity: 50%">
+            </div>
+            <h1
+                style="
+                    position: absolute;
+                    background-color: transparent;
+                    top: 140px;
+                    left: 30%;
+                    right: 30%;
+                    color: white;
+                    text-align: center;
+                "
+                class="animate__animated animate__bounce"
+            >Checkout</h1>
             <div style="
                 background-size: cover;
                 position: absolute;
                 bottom: 0px;
                 background-color: transparent;
-                top: 138px;
+                top: 280px;
                 left: 90px;
                 right: 90px;
             ">
@@ -46,7 +46,7 @@
                 ">
                 </div>
             </div>
-    </div>
+        </div>
         <div style="
             margin-right: 90px;
             margin-left: 90px;
@@ -56,33 +56,38 @@
             min-height: 70vh
         ">
             <div class="container" style="margin-top: 0px; margin-bottom: 100px; padding-right: 200px; padding-left: 200px">
-
-
-                <div class="row" style="margin-bottom: 20px">
-                    <div class="col-md-3">
-                        <h1>checkout</h1>
+                <div>
+                    <div class="row" style="margin-bottom: 20px">
+                        <div class="col-md-3">
+                            <h1>checkout</h1>
+                        </div>
+                        <div class="col-md-4 offset-md-5" style="text-align: end">
+                            <h4 id="display_total" style="display: inline; margin-top: 15px; text-align: end;">Total: ${{$total}}</h4>
+                            <span id="additional_price" style="margin-top: 15px; text-align: end;">(plus ${{$total}})</span>
+                        </div>
                     </div>
-                    <div class="col-md-3 offset-md-6">
-                        <h4 style="margin-top: 15px; text-align: end;">Total: ${{$total}}</h4>
-                    </div>
+
+                    <hr style="margin-bottom: 25px">
                 </div>
-
-                <hr style="margin-bottom: 25px">
 
                 <div id="charge-error" class="alert alert-danger" {{ !Session::has('error') ? 'hidden': ''}}>
                     {{Session::get('error')}}
                 </div>
 
-                <form action="{{route('checkout')}}" method="post" id="checkout-form">
+                <form action="{{route('checkout')}}" method="post" id="checkout-form" class="my-scrollbar" style="height: 500px; overflow-y: scroll; overflow-x: hidden;">
                     @csrf
-
 
                     <div class="row">
 
+
+                        <input type="number" id="total_amount" class="form-control" name="total_amount" value="{{$total}}" hidden>
+
+                        <input type="number" id="total_constant" class="form-control" value="{{$total}}" hidden>
+
                         <div class="col-md-5 form-group" style="margin-bottom: 40px">
                             <div class="form-group">
-                                <label for="name">Nom</label>
-                                <input type="text" id="name" class="form-control" required>
+                                <label for="name">Nom complete</label>
+                                <input type="text" id="name" class="form-control" value="{{(Auth::user())->nom}} {{(Auth::user())->prenom}}" required>
                             </div>
                         </div>
 
@@ -125,12 +130,14 @@
                             </div>
                         </div>
 
-                        {{--tsup--}}
                         <div class="col-md-12" style="margin-bottom: 40px">
 
-                            <h1 id="sector"></h1>
-                            <h1 id="address"></h1>
-                            <div id="mapid" style="height: 300px"></div>
+                            <div class="row">
+                                <div class="col-md-3"><h3 id="sector"></h3></div>
+                                <div class="col-md-5 offset-md-4" style="text-align: end"><h3 id="address"></h3></div>
+                            </div>
+
+                            <div id="mapid" style="height: 400px"></div>
                             <input type="text" id="sector_input" name="sector" hidden>
                             <input type="text" id="address_input" name="address" hidden>
                         </div>
