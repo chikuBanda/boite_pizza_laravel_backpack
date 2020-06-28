@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/thanks', 'CmdController@thanyou');
+
 Route::get('/', function () {
     return view('welcome');
 });

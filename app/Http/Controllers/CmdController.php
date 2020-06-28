@@ -59,7 +59,7 @@ class CmdController extends Controller
         }
         $this->enregistrerCmd($request);
         Session::forget('cart');
-        return redirect('produits')->with('success', 'successfully purchased');
+        return redirect('thanks')->with('success', 'successfully purchased');
     }
 
     public function enregistrerCmd(Request $request)
@@ -172,5 +172,17 @@ class CmdController extends Controller
         }
 
         return redirect()->route('getCart');
+    }
+
+    public function thanyou(Request $request)
+    {
+        if($request->session()->has('success'))
+        {
+            return view('commande.thank-you');
+        }
+        else
+        {
+            return redirect('/');
+        }
     }
 }
