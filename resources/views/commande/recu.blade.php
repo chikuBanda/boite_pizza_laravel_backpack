@@ -35,16 +35,16 @@
 
              <div style="margin-top: 70px;">
                 <div style="float: left">
-                    <h3>Client Name</h3> <br>
-                    <p>Date: <b>04 May 16</b></p> <br>
-                    <p>Invoice number: <b>1522</b></p> <br>
+                    <h3>{{$cmd->client->nom}} {{$cmd->client->prenom}}</h3> <br>
+                    <p>Date: <b>{{$cmd->date}}</b></p> <br>
+                    <p>Invoice number: <b>{{$cmd->numCommande}}</b></p> <br>
                 </div>
 
                 <div style="text-align: right;">
                     <p>Boite Pizza</p> <br>
-                    <p>Address Boite pizza</p> <br>
-                    <p>Ville boite pizza</p> <br>
-                    <p>Postcode</p> <br>
+                    <p>Marjane</p> <br>
+                    <p>Beni Mellal</p> <br>
+                    <p>23000</p> <br>
                 </div>
             </div>
 
@@ -69,102 +69,74 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td style="text-align: left">
-                            hello
-                        </td>
-                        <td>
-                            hello
-                        </td>
-                        <td>
-                            hello
-                        </td>
-                        <td>
-                            hello
-                        </td>
-                    </tr>
+                    @foreach ($cmd->produits as $produit)
+                        <tr>
+                            <td style="text-align: left">
+                                {{$produit->nom}}
+                            </td>
+                            <td>
+                                ${{$produit->prix}}
+                            </td>
+                            <td>
+                                {{$produit->pivot->nb}}
+                            </td>
+                            <td>
+                                ${{$produit->pivot->prix}}
+                            </td>
+                        </tr>
+                    @endforeach
 
-                    <tr>
-                        <td style="text-align: left">
-                            hello
-                        </td>
-                        <td>
-                            hello
-                        </td>
-                        <td>
-                            hello
-                        </td>
-                        <td>
-                            hello
-                        </td>
-                    </tr>
+
                 </tbody>
             </table>
 
-            <h4 style="margin-top: 70px; margin-bottom: 20px">Formules:</h4>
+            @if ($exisitFormule)
+                <h4 style="margin-top: 70px; margin-bottom: 20px">Formules:</h4>
 
-            <table style="width: 100%; border-collapse: collapse; margin-left: auto; margin-right: auto">
-                <tr style="border-bottom: 1px solid black">
-                    <th style="width: 20%; text-align: left">
-                        Nom
-                    </th>
-                    <th style="width: 20%; text-align: left">
-                        Produits
-                    </th>
-                    <th>
-                        Prix unitaire
-                    </th>
-                    <th>
-                        Quantity
-                    </th>
-                    <th>
-                        Subtotal
-                    </th>
-                </tr>
+                <table style="width: 100%; border-collapse: collapse; margin-left: auto; margin-right: auto">
+                    <tr style="border-bottom: 1px solid black">
+                        <th style="width: 20%; text-align: left">
+                            Nom
+                        </th>
+                        <th style="width: 20%; text-align: left">
+                            Produits
+                        </th>
+                        <th>
+                            Prix unitaire
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Subtotal
+                        </th>
+                    </tr>
 
-                <tr>
-                    <td style="text-align: left">
-                        hello
-                    </td>
-                    <td style="text-align: left">
-                        hello <br>
-                        hello <br>
-                        hello <br>
-                        hello <br>
-                    </td>
-                    <td>
-                        hello
-                    </td>
-                    <td>
-                        hello
-                    </td>
-                    <td>
-                        hello
-                    </td>
-                </tr>
+                    @foreach ($cmd->formules as $formule)
+                        <tr>
+                            <td style="text-align: left">
+                                {{$formule->nomFormule}}
+                            </td>
+                            <td style="text-align: left">
+                                @foreach ($formule->produitsDuFormule() as $produitItem)
+                                    {{$produitItem->nom}} <br>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{$formule->prix}}
+                            </td>
+                            <td>
+                                {{$formule->pivot->nb}}
+                            </td>
+                            <td>
+                                {{$formule->pivot->prix}}
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            @endif
 
-                <td style="text-align: left">
-                        hello
-                    </td>
-                    <td style="text-align: left">
-                        hello <br>
-                        hello <br>
-                        hello <br>
-                        hello <br>
-                    </td>
-                    <td>
-                        hello
-                    </td>
-                    <td>
-                        hello
-                    </td>
-                    <td>
-                        hello
-                    </td>
-                </tr>
-            </table>
-
-            <h3 style="margin-top: 50px; text-align: end; float: right">Totale: $5000</h3>
+            <h3 style="margin-top: 50px; text-align: end; float: right">Totale: ${{$cmd->totale}}</h3>
         </div>
     </body>
 </html>

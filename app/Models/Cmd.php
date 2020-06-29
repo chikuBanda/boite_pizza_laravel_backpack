@@ -53,6 +53,11 @@ class Cmd extends Model
     }
 
 
+    public function client()
+    {
+        return $this->belongsTo('App\Models\Client', 'numClient');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

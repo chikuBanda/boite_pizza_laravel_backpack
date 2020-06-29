@@ -52,6 +52,8 @@ Route::get('/test', function(){
     return view('test', ['nb' => Lignecmdform::find($form->pivot->ligneID)->produits]);
 });
 
+Route::get('/carttest', 'CmdController@carttest');
+
 //carttest
 Route::get('cart', [
     'uses'=>'CmdController@getCart',

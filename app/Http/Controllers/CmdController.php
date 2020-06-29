@@ -77,6 +77,7 @@ class CmdController extends Controller
             $cmd->date = Carbon::now()->toDateTimeString();
             $cmd->secteur = $request->input('sector');
             $cmd->realise = 1;
+            $cmd->totale = Session::get('cart')->totalPrice;
 
             $cmd->save();
 
@@ -121,6 +122,9 @@ class CmdController extends Controller
                 }
 
             }
+
+            $request->session()->put('cmd', $cmd);
+            //$request->session()->put('cmd', Cmd::find(48));
         }
     }
 
@@ -177,9 +181,32 @@ class CmdController extends Controller
 
     public function thanyou(Request $request)
     {
-        if(!$request->session()->has('success'))
+        if($request->session()->has('success'))
         {
             return view('commande.thank-you');
+        }
+        else
+        {
+            return redirect('/carttest');
+        }
+    }
+
+    public function recu(Request $request)
+    {
+        if($request->session()->has('cmd'))
+        {
+            $cmd = Session::get('cmd');
+            $exisitFormule = false;
+
+            if($cmd->formules->count() > 0){
+                $exisitFormule = true;
+            }
+
+            $pdf = PDF::loadView('commande.recu', ['cmd' => $cmd, 'exisitFormule' => $exisitFormule]);
+            //return $pdf->download('recu.pdf');
+
+
+            return $pdf->stream();
         }
         else
         {
@@ -187,10 +214,8 @@ class CmdController extends Controller
         }
     }
 
-    public function recu()
+    public function carttest(Request $request)
     {
-        $pdf = PDF::loadView('commande.recu');
-        //return $pdf->download('recu.pdf');
-        return $pdf->stream();
+        dd($request->session()->get('cart'));
     }
 }
