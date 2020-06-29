@@ -22,8 +22,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/thanks', 'CmdController@thanyou');
 
+Route::get('/recu', 'CmdController@recu');
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/recu_template', function () {
+    return view('commande.recu');
 });
 
 Route::get('/home', function () {

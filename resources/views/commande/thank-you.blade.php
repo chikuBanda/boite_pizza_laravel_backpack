@@ -64,7 +64,7 @@
                         <a class="btn" style="background-color: #FEDDCA; border-radius: 15px; width: 100%" href="/produits">Continuer au produits</a>
                     </div>
                     <div class="col-md-4">
-                        <a class="btn" style="background-color: #FC955B; border-radius: 15px; width: 100%" href="/">Votre recu (pdf)</a>
+                        <a class="btn" style="background-color: #FC955B; border-radius: 15px; width: 100%" href="/recu">Votre recu (pdf)</a>
                     </div>
                 </div>
             </div>

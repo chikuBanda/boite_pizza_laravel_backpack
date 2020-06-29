@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Exception;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
+use PDF;
 
 class CmdController extends Controller
 {
@@ -176,7 +177,7 @@ class CmdController extends Controller
 
     public function thanyou(Request $request)
     {
-        if($request->session()->has('success'))
+        if(!$request->session()->has('success'))
         {
             return view('commande.thank-you');
         }
@@ -184,5 +185,12 @@ class CmdController extends Controller
         {
             return redirect('/');
         }
+    }
+
+    public function recu()
+    {
+        $pdf = PDF::loadView('commande.recu');
+        //return $pdf->download('recu.pdf');
+        return $pdf->stream();
     }
 }
