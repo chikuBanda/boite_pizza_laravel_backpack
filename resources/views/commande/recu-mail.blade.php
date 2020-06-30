@@ -29,7 +29,7 @@
     <body>
         <div style="padding-left: 30px; padding-right: 30px; position: relative">
             <div>
-                <img src="{{ public_path('uploads/img/logo.png') }}" alt="" srcset="" width="160" height="100">
+                <img src="{{ asset('uploads/img/logo.png') }}" alt="" srcset="" width="160" height="100">
                 <h2 style="display: inline; position: absolute; top: 5">Recu</h2>
             </div>
 
@@ -47,6 +47,7 @@
                     <p>23000</p> <br>
                 </div>
             </div>
+
 
             @if ($cmd->produits->count() > 0)
                 <h4 style="margin-top: 70px; margin-bottom: 20px">Produits:</h4>

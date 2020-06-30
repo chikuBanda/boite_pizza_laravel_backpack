@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CommandExecute;
 use App\Models\Cart;
 use App\Models\Cmd;
 use App\Models\Cmdformligneproduit;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Support\Facades\Mail;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
 use PDF;
@@ -123,6 +125,7 @@ class CmdController extends Controller
 
             }
 
+            Mail::to($cmd->client->email)->send(new CommandExecute($cmd));
             $request->session()->put('cmd', $cmd);
             //$request->session()->put('cmd', Cmd::find(48));
         }

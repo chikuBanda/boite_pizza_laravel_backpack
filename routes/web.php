@@ -28,12 +28,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/mailtest', function () {
+    return view('commande.recu-mail');
+});
+
 Route::get('/recu_template', function () {
     return view('commande.recu');
 });
 
 Route::get('/home', function () {
-    return view('welcome');
+    $cmd = Cmd::find(44);
+
+    return view('welcome', ['cmd' => $cmd]);
 });
 
 Route::get('/test', function(){

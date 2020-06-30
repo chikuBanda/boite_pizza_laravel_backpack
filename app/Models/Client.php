@@ -8,6 +8,7 @@ use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNo
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 use Laravelista\Comments\Commenter;
 
 class Client extends Authenticatable
@@ -42,6 +43,12 @@ class Client extends Authenticatable
     public function getAuthPassword()
     {
       return $this->motdepasse;
+    }
+
+    public function setMotdepasseAttribute($pass){
+
+        $this->attributes['motdepasse'] = Hash::make($pass);
+
     }
 
 

@@ -64,9 +64,11 @@
                             <li class="nav-item">
                                 <a class="nav-link font-large" href="/cart">Cart
                                     <i class="fas fa-shopping-cart">
-                                        <span class="badge badge-success">
-                                            {{Session::has('cart') ? Session::get('cart')->totalQuantity : ''}}
-                                        </span>
+                                        @if (Session::has('cart'))
+                                            <span class="badge badge-success">
+                                                {{Session::get('cart')->totalQuantity}}
+                                            </span>
+                                        @endif
                                     </i>
                                 </a>
                             </li>
@@ -91,9 +93,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link font-large" href="/cart">Cart
                                         <i class="fas fa-shopping-cart">
-                                            <span class="badge badge-success">
-                                                {{Session::has('cart') ? Session::get('cart')->totalQuantity : ''}}
-                                            </span>
+                                            @if (Session::has('cart'))
+                                                <span class="badge badge-success">
+                                                    {{Session::get('cart')->totalQuantity}}
+                                                </span>
+                                            @endif
                                         </i>
                                     </a>
                                 </li>
