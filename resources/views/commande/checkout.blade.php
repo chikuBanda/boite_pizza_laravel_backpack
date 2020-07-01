@@ -62,8 +62,8 @@
                             <h1>checkout</h1>
                         </div>
                         <div class="col-md-4 offset-md-5" style="text-align: end">
-                            <h4 id="display_total" style="display: inline; margin-top: 15px; text-align: end;">Total: ${{$total}}</h4>
-                            <span id="additional_price" style="margin-top: 15px; text-align: end;">(plus ${{$total}})</span>
+                            <h4 id="display_total" style="display: inline; margin-top: 15px; text-align: end;">Totale: ${{$total}}</h4>
+                            <span id="additional_price" style="margin-top: 15px; text-align: end;"></span>
                         </div>
                     </div>
 
@@ -80,9 +80,11 @@
                     <div class="row">
 
 
-                        <input type="number" id="total_amount" class="form-control" name="total_amount" value="{{$total}}" hidden>
+                        <input type="number" id="totale" class="form-control" name="totale" value="{{$total}}" hidden>
 
-                        <input type="number" id="total_constant" class="form-control" value="{{$total}}" hidden>
+                        <input type="number" id="sous_totale" class="form-control" name="sous_totale" value="{{$total}}" hidden>
+
+                        <input type="number" id="prix_liv" class="form-control" name="prix_liv" hidden>
 
                         <div class="col-md-5 form-group" style="margin-bottom: 40px">
                             <div class="form-group">

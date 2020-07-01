@@ -21,8 +21,9 @@
             @page {
                     margin-top: 50mm;
             },
-            p, h3{
+            p, h3, h4{
                 display: inline;
+                margin-bottom: 8px
             }
         </style>
     </head>
@@ -49,7 +50,7 @@
             </div>
 
             @if ($cmd->produits->count() > 0)
-                <h4 style="margin-top: 70px; margin-bottom: 20px">Produits:</h4>
+                <h4 style="margin-top: 100px; margin-bottom: 20px">Produits:</h4>
 
                 <table style="width: 100%; border-collapse: collapse; margin-left: auto; margin-right: auto">
                     <thead>
@@ -93,7 +94,7 @@
             @endif
 
             @if ($cmd->formules->count() > 0)
-                <h4 style="margin-top: 70px; margin-bottom: 20px">Formules:</h4>
+                <h4 style="margin-top: 100px; margin-bottom: 20px">Formules:</h4>
 
                 <table style="width: 100%; border-collapse: collapse; margin-left: auto; margin-right: auto">
                     <tr style="border-bottom: 1px solid black">
@@ -138,7 +139,19 @@
                 </table>
             @endif
 
-            <h3 style="margin-top: 50px; text-align: end; float: right">Totale: ${{$cmd->totale}}</h3>
+
+            <div style="margin-top: 50px">
+                <div style="text-align: right; float: right; margin-left: 50px">
+                    <h4>${{$cmd->sousTotale}}</h4> <br>
+                    <h4>${{$cmd->prixLiv}}</h4> <br>
+                    <h3>${{$cmd->totale}}</h3>
+                </div>
+                <div style="text-align: left; float: right">
+                    <h4>Sous Totale:</h4> <br>
+                    <h4>Livraison:</h4> <br>
+                    <h3>Totale:</h3>
+                </div>
+            </div>
         </div>
     </body>
 </html>

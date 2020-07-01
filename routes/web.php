@@ -29,7 +29,7 @@ Route::get('/', function () {
 });
 
 Route::get('/mailtest', function () {
-    return view('commande.recu-mail');
+    return view('commande.recu-mail', ['cmd' => Cmd::find(58)]);
 });
 
 Route::get('/recu_template', function () {

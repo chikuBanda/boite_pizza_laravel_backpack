@@ -51,7 +51,7 @@ class CmdController extends Controller
         try{
             \Stripe\Charge::create([
                 //'amount' => $cart->totalPrice * 100,
-                'amount' => $request->input('total_amount') * 100,
+                'amount' => $request->input('totale') * 100,
                 'currency' => 'usd',
                 'source'=> "tok_mastercard",
                 'description' => 'My First Test Charge (created for API docs)',
@@ -79,7 +79,9 @@ class CmdController extends Controller
             $cmd->date = Carbon::now()->toDateTimeString();
             $cmd->secteur = $request->input('sector');
             $cmd->realise = 1;
-            $cmd->totale = Session::get('cart')->totalPrice;
+            $cmd->prixLiv = $request->input('prix_liv');
+            $cmd->sousTotale = $request->input('sous_totale');
+            $cmd->totale = $request->input('totale');
 
             $cmd->save();
 

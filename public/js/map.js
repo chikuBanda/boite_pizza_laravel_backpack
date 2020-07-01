@@ -75,34 +75,40 @@ function isInCircle2Radius()
 if(isInCircleRadius()){
     document.getElementById("sector").innerHTML = "sector 1";
     document.getElementById("sector_input").value = "sector 1";
-    val = parseInt(document.getElementById("total_constant").value, 10);
+    val = parseInt(document.getElementById("sous_totale").value, 10);
     tot = val + 10;
     console.log(tot)
-    document.getElementById("total_amount").value = tot;
+    document.getElementById("totale").value = tot;
+    document.getElementById("prix_liv").value = 10;
     document.getElementById("display_total").innerHTML = "Total: $" + tot;
-    document.getElementById("additional_price").innerHTML = "(plus $" + 10 + ")";
+    document.getElementById("additional_price").innerHTML = "($" + val+ " + $10)";
+    console.log("prixLiv: " + document.getElementById("prix_liv").value);
 }
 else if(isInCircle2Radius() && !isInCircleRadius())
 {
     document.getElementById("sector").innerHTML = "sector 2";
     document.getElementById("sector_input").value = "sector 2";
-    val = parseInt(document.getElementById("total_constant").value, 10);
+    val = parseInt(document.getElementById("sous_totale").value, 10);
     tot = val + 20;
     console.log(tot)
-    document.getElementById("total_amount").value = tot;
+    document.getElementById("totale").value = tot;
+    document.getElementById("prix_liv").value = 20;
     document.getElementById("display_total").innerHTML = "Total: $" + tot;
-    document.getElementById("additional_price").innerHTML = "(plus $" + 20 + ")";
+    document.getElementById("additional_price").innerHTML = "($" + val+ " + $20)";
+    console.log("prixLiv: " + document.getElementById("prix_liv").value);
 }
 else if(!isInCircle2Radius() && !isInCircleRadius())
 {
     document.getElementById("sector").innerHTML = "sector 3";
     document.getElementById("sector_input").value = "sector 3";
-    val = parseInt(document.getElementById("total_constant").value, 10);
+    val = parseInt(document.getElementById("sous_totale").value, 10);
     tot = val + 30;
     console.log(tot)
-    document.getElementById("total_amount").value = tot;
+    document.getElementById("totale").value = tot;
+    document.getElementById("prix_liv").value = 30;
     document.getElementById("display_total").innerHTML = "Total: $" + tot;
-    document.getElementById("additional_price").innerHTML = "(plus $" + 30 + ")";
+    document.getElementById("additional_price").innerHTML = "($" + val+ " + $30)";
+    console.log("prixLiv: " + document.getElementById("prix_liv").value);
 }
 
 marker2.on('move', function(e){
@@ -118,36 +124,41 @@ marker2.on('move', function(e){
     if(isInCircleRadius()){
         document.getElementById("sector").innerHTML = "sector 1";
         document.getElementById("sector_input").value = "sector 1";
-        val = parseInt(document.getElementById("total_constant").value, 10);
+        val = parseInt(document.getElementById("sous_totale").value, 10);
         tot = val + 10;
         console.log(tot)
-        document.getElementById("total_amount").value = tot;
+        document.getElementById("totale").value = tot;
+        document.getElementById("prix_liv").value = 10;
         document.getElementById("display_total").innerHTML = "Total: $" + tot;
-        document.getElementById("additional_price").innerHTML = "(plus $" + 10 + ")";
+        document.getElementById("additional_price").innerHTML = "($" + val+ " + $10)";
+        console.log("prixLiv: " + document.getElementById("prix_liv").value);
     }
     else if(isInCircle2Radius() && !isInCircleRadius())
     {
         document.getElementById("sector").innerHTML = "sector 2";
         document.getElementById("sector_input").value = "sector 2";
-        val = parseInt(document.getElementById("total_constant").value, 10);
+        val = parseInt(document.getElementById("sous_totale").value, 10);
         tot = val + 20;
         console.log(tot)
-        document.getElementById("total_amount").value = tot;
+        document.getElementById("totale").value = tot;
+        document.getElementById("prix_liv").value = 20;
         document.getElementById("display_total").innerHTML = "Total: $" + tot;
-        document.getElementById("additional_price").innerHTML = "(plus $" + 20 + ")";
+        document.getElementById("additional_price").innerHTML = "($" + val+ " + $20)";
+        console.log("prixLiv: " + document.getElementById("prix_liv").value);
     }
     else if(!isInCircle2Radius() && !isInCircleRadius())
     {
         document.getElementById("sector").innerHTML = "sector 3";
         document.getElementById("sector_input").value = "sector 3";
-        val = parseInt(document.getElementById("total_constant").value, 10);
+        val = parseInt(document.getElementById("sous_totale").value, 10);
         tot = val + 30;
         console.log(tot)
-        document.getElementById("total_amount").value = tot;
+        document.getElementById("totale").value = tot;
+        document.getElementById("prix_liv").value = 30;
         document.getElementById("display_total").innerHTML = "Total: $" + tot;
-        document.getElementById("additional_price").innerHTML = "(plus $" + 30 + ")";
+        document.getElementById("additional_price").innerHTML = "($" + val+ " + $30)";
+        console.log("prixLiv: " + document.getElementById("prix_liv").value);
     }
-
 });
 
 mymap.on('click', function (e) {

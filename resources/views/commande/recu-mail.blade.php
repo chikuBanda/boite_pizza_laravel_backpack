@@ -1,6 +1,10 @@
 <html>
     <head>
         <style>
+            html{
+                max-width: 600px;
+                max-height: 350px;
+            },
             th
             {
                 text-align: right;
@@ -23,6 +27,9 @@
             },
             p, h3{
                 display: inline;
+            },
+            p{
+                margin-bottom: 8px
             }
         </style>
     </head>
@@ -35,19 +42,18 @@
 
              <div style="margin-top: 70px;">
                 <div style="float: left">
-                    <h3>{{$cmd->client->nom}} {{$cmd->client->prenom}}</h3> <br>
-                    <p>Date: <b>{{$cmd->date}}</b></p> <br>
-                    <p>Invoice number: <b>{{$cmd->numCommande}}</b></p> <br>
+                    <h3 style="margin: 0px">{{$cmd->client->nom}} {{$cmd->client->prenom}}</h3> <br>
+                    <p style="margin: 0px">Date: <b>{{$cmd->date}}</b></p> <br>
+                    <p style="margin: 0px">Num recu: <b>{{$cmd->numCommande}}</b></p> <br>
                 </div>
 
                 <div style="text-align: right;">
-                    <p>Boite Pizza</p> <br>
-                    <p>Marjane</p> <br>
-                    <p>Beni Mellal</p> <br>
-                    <p>23000</p> <br>
+                    <p style="margin: 0px">Boite Pizza</p> <br>
+                    <p style="margin: 0px">Marjane</p> <br>
+                    <p style="margin: 0px">Beni Mellal</p> <br>
+                    <p style="margin: 0px">23000</p> <br>
                 </div>
             </div>
-
 
             @if ($cmd->produits->count() > 0)
                 <h4 style="margin-top: 70px; margin-bottom: 20px">Produits:</h4>
@@ -64,7 +70,7 @@
                             <th>
                                 Quantity
                             </th>
-                            <th>
+                            <th style="text-align: right">
                                 Subtotal
                             </th>
                         </tr>
@@ -76,13 +82,13 @@
                                 <td style="text-align: left">
                                     {{$produit->nom}}
                                 </td>
-                                <td>
+                                <td style="text-align: center">
                                     ${{$produit->prix}}
                                 </td>
-                                <td>
+                                <td style="text-align: center">
                                     {{$produit->pivot->nb}}
                                 </td>
-                                <td>
+                                <td style="text-align: right">
                                     ${{$produit->pivot->prix}}
                                 </td>
                             </tr>
@@ -110,8 +116,8 @@
                         <th>
                             Quantity
                         </th>
-                        <th>
-                            Subtotal
+                        <th style="text-align: right">
+                            Totale
                         </th>
                     </tr>
 
@@ -125,13 +131,13 @@
                                     {{$produitItem->nom}} <br>
                                 @endforeach
                             </td>
-                            <td>
+                            <td style="text-align: center">
                                 {{$formule->prix}}
                             </td>
-                            <td>
+                            <td style="text-align: center">
                                 {{$formule->pivot->nb}}
                             </td>
-                            <td>
+                            <td style="text-align: right">
                                 {{$formule->pivot->prix}}
                             </td>
                         </tr>
@@ -139,7 +145,19 @@
                 </table>
             @endif
 
-            <h3 style="margin-top: 50px; text-align: end; float: right">Totale: ${{$cmd->totale}}</h3>
+            <div style="margin-top: 50px; text-align: end; float: right">
+                <div style="text-align: left; float: left;">
+                    <h4>Sous Totale:</h4>
+                    <h4>Livraison:</h4>
+                    <h3>Totale:</h3>
+                </div>
+                <div style="text-align: right; float: right; margin-left: 50px">
+                    <h4>${{$cmd->totale}}</h4>
+                    <h4>${{$cmd->prixLiv}}</h4>
+                    <h3>${{$cmd->totale + $cmd->prixLiv}}</h3>
+                </div>
+            </div>
+
         </div>
     </body>
 </html>
