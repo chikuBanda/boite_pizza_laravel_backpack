@@ -108,10 +108,10 @@
                             Prix unitaire
                         </th>
                         <th>
-                            Quantity
+                            Quantite
                         </th>
                         <th>
-                            Subtotal
+                            Totale
                         </th>
                     </tr>
 

@@ -80,9 +80,16 @@ Route::post('/add-formule-to-cart/{id}', 'FormuleController@postAddToCart');
 
 Route::get('/checkout', 'CmdController@checkout');
 
+Route::get('/checkout2', 'CmdController@checkout2');
+
 Route::post('/checkout', [
     'uses' => 'CmdController@postCheckout',
     'as' => 'checkout'
+])->middleware('auth');
+
+Route::post('/checkout2', [
+    'uses' => 'CmdController@postCheckout2',
+    'as' => 'checkout2'
 ])->middleware('auth');
 
 Route::post('/updateCart', [
@@ -90,6 +97,7 @@ Route::post('/updateCart', [
     'as' => 'updateCart'
 ]);
 
+Route::get('mode-payement', 'CmdController@modePayement');
 
 Route::get('/formules/{id}/{nom}', function ($id, $nom) {
     if($nom == 'solo')

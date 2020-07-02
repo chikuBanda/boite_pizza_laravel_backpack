@@ -38,6 +38,24 @@ class CmdController extends Controller
         }
     }
 
+    public function checkout2()
+    {
+        if (Auth::check()) {
+            if(!Session::has('cart'))
+            {
+                return redirect('/');
+            }
+
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+            $total = $cart->totalPrice;
+            return view('commande.checkout2', ['total' => $total]);
+        }
+        else{
+            return redirect('login');
+        }
+    }
+
     public function postCheckout(Request $request)
     {
         if(!Session::has('cart'))
@@ -65,6 +83,21 @@ class CmdController extends Controller
         return redirect('thanks')->with('success', 'successfully purchased');
     }
 
+    public function postCheckout2(Request $request)
+    {
+        if(!Session::has('cart'))
+        {
+            return redirect('/');
+        }
+
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+
+        $this->enregistrerCmd($request);
+        Session::forget('cart');
+        return redirect('thanks')->with('success', 'successfully purchased');
+    }
+
     public function enregistrerCmd(Request $request)
     {
         if(Session::has('cart'))
@@ -75,10 +108,10 @@ class CmdController extends Controller
 
             $cmd->numClient = $client->numClient;
             $cmd->adresseLiv = $request->input('address');
-            $cmd->type = 'livraison';
+            $cmd->type = $request->input('typeCmd');
             $cmd->date = Carbon::now()->toDateTimeString();
             $cmd->secteur = $request->input('sector');
-            $cmd->realise = 1;
+            $cmd->realise = $request->input('realise');
             $cmd->prixLiv = $request->input('prix_liv');
             $cmd->sousTotale = $request->input('sous_totale');
             $cmd->totale = $request->input('totale');
@@ -222,5 +255,21 @@ class CmdController extends Controller
     public function carttest(Request $request)
     {
         dd($request->session()->get('cart'));
+    }
+
+    public function modePayement()
+    {
+        if (Auth::check()) {
+            if(!Session::has('cart'))
+            {
+                return redirect('/');
+            }
+
+            return view('commande.mode-payement');
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
 }

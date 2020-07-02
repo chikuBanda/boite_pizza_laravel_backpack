@@ -86,53 +86,14 @@
 
                         <input type="number" id="prix_liv" class="form-control" name="prix_liv" hidden>
 
-                        <input id="typeCmd" class="form-control" name="typeCmd" value="payment par carte" hidden>
+                        <input id="typeCmd" class="form-control" name="typeCmd" value="payment a la livraison" hidden>
 
-                        <input id="realise" type="number" class="form-control" name="realise" value="1" hidden>
+                        <input id="realise" type="number" class="form-control" name="realise" value="0" hidden>
 
                         <div class="col-md-5 form-group" style="margin-bottom: 40px">
                             <div class="form-group">
                                 <label for="name">Nom complete</label>
                                 <input type="text" id="name" class="form-control" value="{{(Auth::user())->nom}} {{(Auth::user())->prenom}}" required>
-                            </div>
-                        </div>
-
-                        <div class="col-md-5 offset-md-2 form-group" style="margin-bottom: 40px">
-                            <div class="form-group">
-                                <label for="card-number">Card holder number</label>
-                                <input type="text" id="card-number" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="col-md-5 form-group" style="margin-bottom: 40px">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="card-expiry-month">Exp. Month</label>
-                                        <input type="text" id="card-expiry-month" class="form-control" required>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="card-expiry-year">Exp. Year</label>
-                                        <input type="text" id="card-expiry-month" class="form-control" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-5 offset-md-2 form-group" style="margin-bottom: 40px">
-                            <div class="form-group">
-                                <label for="card-cvc">CVC</label>
-                                <input type="text" id="card-cvc" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="col-md-5 form-group" style="margin-bottom: 40px">
-                            <div class="form-group">
-                                <label for="card-name">Card holder name</label>
-                                <input type="text" id="card-name" class="form-control" required>
                             </div>
                         </div>
 
@@ -162,9 +123,7 @@
 @endsection
 
 @section('scripts')
-    <script src="https://js.stripe.com/v3/"></script>
     <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/checkout.js')}}"></script>
     <script src="{{ asset('js/map.js')}}"></script>
 @endsection
 

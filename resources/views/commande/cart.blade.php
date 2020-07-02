@@ -160,11 +160,11 @@
                         <!-- End -->
                         <div class="row" style="padding-left: 20px; padding-right: 20px;">
                             <div class="col-md-4">
-                                <a href="/cart" class="btn btn-outline-secondary">reset</a>
-                                <button class="btn btn-primary" type="submit">update cart</button>
+                                <a href="/cart" class="btn btn-outline-secondary">Reset</a>
+                                <button class="btn btn-primary" type="submit">Mettre a jour</button>
                             </div>
-                            <div class="col-md-2 offset-md-6">
-                                <a href="/checkout" class="btn btn-success" style="width: 100%">checkout</a>
+                            <div class="col-md-3 offset-md-5">
+                                <a href="/mode-payement" class="btn btn-success" style="width: 100%">Continuer au Payement</a>
                             </div>
                         </div>
 
@@ -173,7 +173,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-4 offset-sm-3 offset-md-4">
                             <h2 style="text-align: center">No items in Cart</h2>
-                            <a href="/produits" class="btn btn-success" style="width: 100%">Go to products</a>
+                            <a href="/produits" class="btn btn-success" style="width: 100%">Aller au produits</a>
                         </div>
                     </div>
                 @endif
