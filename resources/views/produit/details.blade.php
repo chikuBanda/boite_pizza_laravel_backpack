@@ -91,9 +91,9 @@
                     <div class="container">
                         <div class="row">
                             @foreach ($ingredients as $ingredient)
-                                <div class="col-md-4" style="margin-bottom: 40px">
+                                <div class="col-md-2" style="margin-bottom: 40px; margin-right: 40px; text-align: center">
                                     <img style="border-radius: 5px" src="{{ asset($ingredient->imgPath) }}" alt="{{$ingredient->nomElem}}" width="100" height="100">
-                                    <h5 style="margin-top: 10px; margin-left: 20px">{{$ingredient->nomElem}}</h3>
+                                    <h5 style="margin-top: 10px;">{{$ingredient->nomElem}}</h3>
                                 </div>
                             @endforeach
                         </div>

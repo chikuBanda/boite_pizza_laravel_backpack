@@ -143,7 +143,15 @@
                                 <div class="col-md-5 offset-md-4" style="text-align: end"><h3 id="address"></h3></div>
                             </div>
 
-                            <div id="mapid" style="height: 400px"></div>
+
+
+                            <div
+                                id="mapid"
+                                style="height: 400px">
+                            </div>
+
+
+
                             <input type="text" id="sector_input" name="sector" hidden>
                             <input type="text" id="address_input" name="address" hidden>
                         </div>
