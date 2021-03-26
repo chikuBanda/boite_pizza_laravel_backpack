@@ -66,7 +66,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return Client::create([
-            'imgPath' => $data['imgPath'],
+            //'imgPath' => $data['imgPath'],
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
             'login' => $data['login'],

@@ -23,7 +23,7 @@ class CreateClientsTable extends Migration
             $table->string('login');
             $table->string('motdepasse');
             $table->double('ca');
-            $table->text('imgPath');
+            $table->text('imgPath')->nullable();
             $table->dateTime('date_inscr')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->boolean('isAdmin')->default(true);
             $table->timestamp('email_verified_at')->nullable();
